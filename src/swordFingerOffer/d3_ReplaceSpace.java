@@ -23,12 +23,33 @@ public class d3_ReplaceSpace {
         long start2 = System.currentTimeMillis();
         String res2 = replaceSpace(new StringBuffer(str));
         System.out.println(res2 + "耗时为" + (System.currentTimeMillis() - start2));
+        System.out.println("======================");
+        System.out.println(repalceSpaceMe(new StringBuilder(str)));
 
     }
 
     public static String repalceSpaceMe(StringBuilder str) {
-        
-        return null;
+        Integer p1 = str.length();
+        for (int cursor = 0; cursor < p1; cursor++) {
+            if (str.charAt(cursor) == ' ') {
+                str.append(' ');
+                str.append(' ');
+            }
+        }
+        Integer p2 = str.length();
+        Integer p1Cursor = p1 - 1;
+        Integer p2Cursor = p2 - 1;
+        while (p1Cursor > 0 && p2Cursor > p1Cursor) {
+            char c = str.charAt(p1Cursor--);
+            if (' ' == c) {
+                str.setCharAt(p2Cursor--, '0');
+                str.setCharAt(p2Cursor--, '2');
+                str.setCharAt(p2Cursor--, '%');
+            } else {
+                str.setCharAt(p2Cursor--, c);
+            }
+        }
+        return str.toString();
     }
 
     public static String replaceSpace(StringBuffer str) {
