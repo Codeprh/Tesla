@@ -24,6 +24,14 @@ public class d4_PrintListEnd2Start {
         }
     }
 
+    /**
+     * 使用递归的方式
+     * todo
+     */
+    public MyList.Node printListFromEndToHeadByRecursive(MyList.Node node, MyList list) {
+        return null;
+    }
+
 
     public static void main(String[] args) {
         MyList list = new MyList();
