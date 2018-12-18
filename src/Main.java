@@ -1,16 +1,11 @@
-import loadBalancingArithmetic.WeightedRandomAlgorithm;
-import loadBalancingArithmetic.WeightedRotationAlgorithm;
-
-import java.net.UnknownHostException;
+import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws UnknownHostException {
-
-        WeightedRandomAlgorithm algorithm = new WeightedRandomAlgorithm();
-
-        for (int i = 0; i < 100; i++) {
-            System.out.println(algorithm.getServer());
-        }
+    public static void main(String[] args) {
+        Scanner x = new Scanner(System.in);
+        String str = x.nextLine();
+        char[] arrs = str.toCharArray();
+        System.out.println((char) (arrs[0] + 3));
     }
 }
