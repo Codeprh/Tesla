@@ -9,7 +9,7 @@
    - 加权轮训法
    - 加权随机法
    - 最小链接法
-3. 实现线程同步的方法
+3. [实现线程同步的方法](https://github.com/Codeprh/DemoAll/blob/master/md/2018-12-18-%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5.md)
    - 同步方式一：使用synchronized同步方法
    - 同步方式二：使用synchronized同步代码块
    - 同步方式三：使用volatile关键字
