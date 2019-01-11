@@ -67,10 +67,7 @@ public class ThraedWheelTrainingPrintV2 {
     public void go(List<Integer> digitalList, List<String> alphabetList) {
         //SingletonThreadPoolEnum executorServicePool = SingletonThreadPoolEnum.INSTANCE;
         DoubleCheckedSingthonThreadPool executorServicePool = DoubleCheckedSingthonThreadPool.getInstallce();
-        //打印数字
-        //打印顺序为12A34B56C……5152Z
         executorServicePool.run(() -> {
-            //todo:test,user java8…………digitalList.forEach();
             try {
                 synchronized (this) {
                     for (int i = 0; i < digitalList.size(); i = i + 2) {
