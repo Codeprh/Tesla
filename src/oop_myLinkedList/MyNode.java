@@ -30,6 +30,11 @@ public class MyNode<T> {
         this.next = next;
     }
 
+    /**
+     * demo printListNode
+     * @param head
+     * @param <T>
+     */
     public static <T> void printListNode(MyNode<T> head) {
         while (head != null) {
             System.out.println(head.getValue());

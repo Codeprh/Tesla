@@ -24,8 +24,6 @@ public class MyLinkedList<T> implements Iterable<T> {
     }
 
     public MyLinkedList() {
-//        head = null;
-//        tail = null;
     }
 
 

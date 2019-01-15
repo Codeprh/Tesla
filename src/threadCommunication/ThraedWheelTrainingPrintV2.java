@@ -37,7 +37,7 @@ public class ThraedWheelTrainingPrintV2 {
 
     /**
      * 提前准备好字母
-     * 原理：利用char特性：65字母:a
+     * 原理：利用char特性：65字母:A
      *
      * @param maxAlphabet 最大值26个字母
      * @return
@@ -52,6 +52,7 @@ public class ThraedWheelTrainingPrintV2 {
     }
 
     public void print(Object... po) {
+
         for (Object obj : po) {
             System.out.print(obj.toString());
         }
@@ -64,6 +65,16 @@ public class ThraedWheelTrainingPrintV2 {
         }
     }
 
+    /**
+     * 实现思路：
+     * 1、通过getDigital(max)取出最大的number数值
+     * 2、通过 getAlphabet(maxAlphabet)取出需要打印的字母，使用char A=(char)65;
+     * 3、private int lock = 2;作为信号量进行线程之间的通信
+     * 4、实现单例模式的线程锁：enum实现和双重锁实现
+     *
+     * @param digitalList
+     * @param alphabetList
+     */
     public void go(List<Integer> digitalList, List<String> alphabetList) {
         //SingletonThreadPoolEnum executorServicePool = SingletonThreadPoolEnum.INSTANCE;
         DoubleCheckedSingthonThreadPool executorServicePool = DoubleCheckedSingthonThreadPool.getInstallce();
