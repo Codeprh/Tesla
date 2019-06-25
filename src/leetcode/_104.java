@@ -50,10 +50,13 @@ public class _104 {
             Pair<BinaryTreeNode, Integer> current = stack.poll();
             root = current.getKey();
             int current_depth = current.getValue();
+            System.out.println("出栈元素为" + (root == null ? "null" : root.Data));
             if (root != null) {
                 depth = Math.max(depth, current_depth);
                 stack.add(new Pair(root.LeftChild, current_depth + 1));
+                System.out.println("入栈元素为" + (root.LeftChild == null ? "null" : root.LeftChild.Data));
                 stack.add(new Pair(root.RightChild, current_depth + 1));
+                System.out.println("入栈元素为" + (root.RightChild == null ? "null" : root.RightChild.Data));
             }
         }
         return depth;
