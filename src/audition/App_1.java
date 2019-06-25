@@ -7,7 +7,7 @@ package audition;
 public class App_1 {
     public static void main(String[] args) {
         boolean isNull = true;
-        System.out.println(isNull ? getValue(isNull) : 0);
+        System.out.println("12" + (isNull ? getValue(isNull) : 0));
     }
 
     private static Integer getValue(boolean isNull) {
