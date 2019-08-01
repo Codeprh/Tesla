@@ -81,9 +81,7 @@ public class _88 {
         }
 
         //考虑剩余的情况
-        if (p2 > 0) {
-            System.arraycopy(nums2, p2, nums1, m - p2, n - p2);
-        }
+        System.arraycopy(nums2, 0, nums1, 0, p2 + 1);
 
     }
 
