@@ -18,9 +18,9 @@ public class _5_Deadlock {
         UnSalfeAccount a2 = new UnSalfeAccount(2, 200);
 
         ThreadUtis.threa_2_start_sameDo(() -> {
-            a1.D_CycleWaiting_Transfer(a2, 100);
+            a1.D_PossessionAndWaiting_Transfer(a2, 100);
         }, () -> {
-            a2.D_CycleWaiting_Transfer(a1, 100);
+            a2.D_PossessionAndWaiting_Transfer(a1, 100);
         });
         System.out.println("a1=" + a1.getBalance() + ",a2=" + a2.getBalance());
     }
@@ -73,10 +73,8 @@ class UnSalfeAccount {
      */
     public void D_PossessionAndWaiting_Transfer(UnSalfeAccount target, Integer amt) {
         //一次性申请转出账户和转入账户，直到成功
-        while (!Allocator.INSTANCE.apply(this, target)) {
-        }
-
         try {
+            Allocator.INSTANCE.apply(this, target);
             transfer(target, amt);
         } catch (Exception e) {
             e.printStackTrace();

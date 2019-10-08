@@ -26,20 +26,23 @@ public enum Allocator {
     private List<Object> als = new ArrayList<>();
 
     /**
-     * 同时申请多个资源的锁
+     * 同时申请多个资源的锁:使用java等待-通知来实现
      *
      * @param lock1
      * @param lock2
      * @return
      */
-    public synchronized boolean apply(Object lock1, Object lock2) {
-        if (als.contains(lock1) || als.contains(lock2)) {
-            return false;
-        } else {
-            als.add(lock1);
-            als.add(lock2);
+    public synchronized void apply(Object lock1, Object lock2) {
+        while (als.contains(lock1) || als.contains(lock2)) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
-        return true;
+        als.add(lock1);
+        als.add(lock2);
+
     }
 
     /**
@@ -51,6 +54,7 @@ public enum Allocator {
     public synchronized void free(Object lock1, Object lock2) {
         als.remove(lock1);
         als.remove(lock2);
+        notifyAll();
     }
 
     public static Allocator getInstance() {
