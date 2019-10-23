@@ -9,7 +9,7 @@ package concurrent._11;
  */
 public class Fibonacci {
     /**
-     * 实现斐波那契数列
+     * 循环实现：实现斐波那契数列
      *
      * @param n
      * @return
@@ -26,11 +26,26 @@ public class Fibonacci {
         return a;
     }
 
+    /**
+     * todo:递归版本的斐波那契数列
+     *
+     * @return
+     */
+    public int rfibonacci(int n) {
+        if (n == 0) {
+            return 0;
+        } else if (n == 1 || n == 2) {
+            return 1;
+        }
+        return rfibonacci(n - 1) + rfibonacci(n - 2);
+    }
+
     public static void main(String[] args) {
         Fibonacci app = new Fibonacci();
-        int[] a = app.fibonacci(40);
+        int[] a = app.fibonacci(4);
         for (int aa : a) {
             System.out.print(aa + "->");
         }
+        System.out.println("最后结果r=" + a[a.length - 1]);
     }
 }
