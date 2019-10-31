@@ -34,6 +34,8 @@ public class _8_Stack_BaseArray {
         return true;
     }
 
+
+
     // 出栈操作
     public String pop() {
         // 栈为空，则直接返回null

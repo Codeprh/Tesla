@@ -59,6 +59,42 @@ public class _LinkedList_All {
     }
 
     /**
+     * 参考版本
+     * 单链表删除倒数第K个节点
+     *
+     * @param list
+     * @param k
+     * @return
+     */
+    public static SNode delLastKth(SNode list, int k) {
+        SNode fast = list;
+        int i = 1;
+        while (fast != null && i < k) {
+            fast = fast.getNext();
+            ++i;
+        }
+
+        if (fast == null) return list;
+
+        SNode slow = list;
+        SNode prev = null;
+        while (fast.getNext() != null) {
+            fast = fast.getNext();
+            prev = slow;
+            slow = slow.getNext();
+        }
+
+        if (prev == null) {
+            list = list.getNext();
+        } else {
+            prev.setNext(prev.getNext().getNext());
+        }
+        return list;
+
+    }
+
+    /**
+     * 参考版本
      * 求链表的中间结点
      *
      * @param list
@@ -86,10 +122,15 @@ public class _LinkedList_All {
 
         SNode head = SNode.createIntLinkedList();
         SNode.printAll(head);
+
         //SNode newHead = reverseLink(head);
         //SNode.printAll(newHead);
-        SNode intermediate = findIntermediatenode(head);
-        System.out.println("中间节点是:" + intermediate.getEle());
+
+        //SNode intermediate = findIntermediatenode(head);
+        //System.out.println("中间节点是:" + intermediate.getEle());
+
+        SNode newHead = delLastKth(head, 2);
+        SNode.printAll(newHead);
 
     }
 
