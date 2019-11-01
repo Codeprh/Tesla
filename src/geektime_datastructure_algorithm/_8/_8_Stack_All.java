@@ -26,6 +26,7 @@ public class _8_Stack_All {
 
     }
 
+
     public static void main(String[] args) {
 
         _8_Stack_BaseArray stackBaseArray = _8_Stack_BaseArray.createStringNumStack();

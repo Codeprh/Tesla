@@ -1,5 +1,7 @@
 package geektime_datastructure_algorithm._9;
 
+import java.util.Arrays;
+
 /**
  * 描述:
  * <p>
@@ -25,8 +27,10 @@ public class _9_CircularQueue {
 
     // 入队
     public boolean enqueue(String item) {
-// 队列满了
-        if ((tail + 1) % n == head) return false;
+        if ((tail + 1) % n == head) {
+            return false;
+        }
+        // 队列满了
         items[tail] = item;
         tail = (tail + 1) % n;
         return true;
@@ -34,10 +38,36 @@ public class _9_CircularQueue {
 
     // 出队
     public String dequeue() {
-// 如果head == tail 表示队列为空
-        if (head == tail) return null;
+        // 如果head == tail 表示队列为空
+        if (head == tail) {
+            return null;
+        }
         String ret = items[head];
         head = (head + 1) % n;
         return ret;
+    }
+
+    @Override
+    public String toString() {
+        return "_9_CircularQueue{" +
+                "items=" + Arrays.toString(items) +
+                ", n=" + n +
+                ", head=" + head +
+                ", tail=" + tail +
+                '}';
+    }
+
+    public static void main(String[] args) {
+
+        _9_CircularQueue app = new _9_CircularQueue(5);
+
+        app.enqueue("i");
+        app.enqueue("feel");
+        app.enqueue("down");
+
+        app.dequeue();
+
+        System.out.println(app.toString());
+
     }
 }
