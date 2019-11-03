@@ -23,6 +23,7 @@ public class _8_Stack_All {
      * 定义栈的数据结构，在该类型中实现一个能够得到栈最小元素的 min 函数。
      */
     public void findMix() {
+        //参考geektime_datastructure_algorithm._8._8_Stack_BaseArray_Min
 
     }
 
