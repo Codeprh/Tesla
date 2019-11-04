@@ -4,6 +4,8 @@ package geektime_datastructure_algorithm._10;
  * 描述:
  * 递归求解n台阶问题:每次只能走一格或者2格
  *
+ * todo：使用散列函数，解决重复计算
+ *
  * @author Noah
  * @create 2019-10-31 09:45
  */
