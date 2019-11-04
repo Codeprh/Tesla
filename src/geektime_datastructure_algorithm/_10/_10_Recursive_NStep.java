@@ -1,15 +1,20 @@
 package geektime_datastructure_algorithm._10;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 描述:
  * 递归求解n台阶问题:每次只能走一格或者2格
- *
- * todo：使用散列函数，解决重复计算
+ * <p>
+ * 使用散列函数，解决重复计算
  *
  * @author Noah
  * @create 2019-10-31 09:45
  */
 public class _10_Recursive_NStep {
+    private Map<Integer, Integer> hash = new HashMap<>();
+
     /**
      * 递归求解
      * <p>
@@ -28,6 +33,29 @@ public class _10_Recursive_NStep {
             return 2;
         }
         return recursive(n - 1) + recursive(n - 2);
+    }
+
+    /**
+     * 利用Hash散列表来存储，避免重复计算
+     *
+     * @param n
+     * @return
+     */
+    public int recursiveHash(int n) {
+        if (n == 1) {
+            return 1;
+        }
+        if (n == 2) {
+            return 2;
+        }
+
+        if (hash.containsKey(n)) {
+            return hash.get(n);
+        }
+        int ret = recursive(n - 1) + recursive(n - 2);
+        hash.put(n, ret);
+        return ret;
+
     }
 
     public static void main(String[] args) {
