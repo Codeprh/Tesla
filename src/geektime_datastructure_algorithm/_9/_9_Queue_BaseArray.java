@@ -2,7 +2,7 @@ package geektime_datastructure_algorithm._9;
 
 /**
  * 描述:
- * 基于数组实现的队列
+ * 基于数组实现的队列（有界）
  *
  * @author Noah
  * @create 2019-10-31 08:48

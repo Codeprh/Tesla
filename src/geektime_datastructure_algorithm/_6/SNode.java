@@ -23,6 +23,10 @@ public class SNode<T> {
         this.next = next;
     }
 
+    public SNode(T ele) {
+        this.ele = ele;
+    }
+
     public T getEle() {
         return ele;
     }
@@ -40,7 +44,7 @@ public class SNode<T> {
     }
 
     /**
-     * 创建一个带头链表
+     * 创建一个带头链表(倒序)
      *
      * @return
      */
@@ -65,6 +69,30 @@ public class SNode<T> {
         head.setNext(fiveNode);
 
         return head;
+    }
+
+    /**
+     * 创建一个带头链表（正序）
+     *
+     * @return
+     */
+    public static SNode createIntLinkedListRev() {
+
+        SNode<Integer> headNull = new SNode();
+
+        SNode oneNode = new SNode(1);
+        SNode twoNode = new SNode(2);
+        SNode threeNode = new SNode(8);
+        SNode fourNode = new SNode(12);
+        SNode fiveNode = new SNode(19);
+
+        headNull.setNext(oneNode);
+        oneNode.setNext(twoNode);
+        twoNode.setNext(threeNode);
+        threeNode.setNext(fourNode);
+        fourNode.setNext(fiveNode);
+
+        return headNull;
     }
 
     /**

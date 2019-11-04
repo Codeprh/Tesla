@@ -94,6 +94,54 @@ public class _LinkedList_All {
     }
 
     /**
+     * 合并两个有序链表
+     *
+     * @param list1
+     * @param list2
+     * @return
+     */
+    public static SNode merge(SNode list1, SNode list2) {
+
+        SNode f = list1;
+
+        SNode l1head = list1;
+        SNode l2head = list2;
+
+        while (l1head.getNext() != null && l2head.getNext() != null) {
+
+            SNode s1 = l1head.getNext();
+            SNode s2 = l2head.getNext();
+
+            SNode cur1 = l1head;
+            SNode cur2 = l2head;
+
+            if ((Integer) s1.getEle() <= (Integer) s2.getEle()) {
+
+                l1head = l1head.getNext();
+                continue;
+
+            } else {
+                //我也不知道这块自己写的是什么呢…………
+                SNode s2Temp = s2.getNext();
+                cur1.setNext(s2);
+                l1head = s2;
+                l1head.setNext(s1);
+                cur2.setNext(s2Temp);
+                l2head = cur2;
+
+            }
+
+
+        }
+        //list1再拼接list2后面的元素
+        if (l2head.getNext() != null) {
+            l1head.setNext(l2head.getNext());
+        }
+        return f;
+
+    }
+
+    /**
      * 参考版本
      * 求链表的中间结点
      *
@@ -120,8 +168,11 @@ public class _LinkedList_All {
 
     public static void main(String[] args) {
 
-        SNode head = SNode.createIntLinkedList();
+        SNode head = SNode.createIntLinkedListRev();
+        SNode head2 = SNode.createIntLinkedListRev();
+        //SNode head2 = createIntLinkedListRev();
         SNode.printAll(head);
+        SNode.printAll(head2);
 
         //SNode newHead = reverseLink(head);
         //SNode.printAll(newHead);
@@ -129,9 +180,35 @@ public class _LinkedList_All {
         //SNode intermediate = findIntermediatenode(head);
         //System.out.println("中间节点是:" + intermediate.getEle());
 
-        SNode newHead = delLastKth(head, 2);
-        SNode.printAll(newHead);
+        //SNode newHead = delLastKth(head, 2);
+        //SNode.printAll(newHead);
 
+        SNode.printAll(merge((head), (head2)));
+
+    }
+
+    /**
+     * 创建一个带头链表（正序）
+     *
+     * @return
+     */
+    public static SNode createIntLinkedListRev() {
+
+        SNode<Integer> headNull = new SNode();
+
+        SNode oneNode = new SNode(1);
+        SNode twoNode = new SNode(2);
+        SNode threeNode = new SNode(3);
+        SNode fourNode = new SNode(4);
+        SNode fiveNode = new SNode(5);
+
+        headNull.setNext(oneNode);
+        oneNode.setNext(twoNode);
+        twoNode.setNext(threeNode);
+        threeNode.setNext(fourNode);
+        fourNode.setNext(fiveNode);
+
+        return headNull;
     }
 
 }
