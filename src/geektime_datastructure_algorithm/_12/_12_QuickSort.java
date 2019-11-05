@@ -62,6 +62,14 @@ public class _12_QuickSort {
         quickSortInternally(a, q + 1, r);
     }
 
+    /**
+     * 原地算法实现
+     *
+     * @param a
+     * @param p
+     * @param r
+     * @return
+     */
     private int partition(int[] a, int p, int r) {
         int pivot = a[r];
         int i = p;
@@ -83,6 +91,20 @@ public class _12_QuickSort {
 
         System.out.println("i=" + i);
         return i;
+    }
+
+    /**
+     * 获取分区点，非原地算法实现
+     * <p>
+     * partition()分区函数可以写得非常简单。我们申请两个临时数组X和Y，遍历A[p...r]，
+     * 将小于 pivot的元素都拷⻉到临时数组X，
+     * 将大于pivot的元素都拷⻉到临时数组Y，
+     * 最后再将数组X和数组Y中数据顺序拷⻉到A[p... r]。
+     *
+     * @return
+     */
+    public int partition_v2(int[] a, int p, int r) {
+        return 0;
     }
 
     public static void main(String[] args) {

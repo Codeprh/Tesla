@@ -134,6 +134,7 @@ public class _LinkedList_All {
 
         }
         //list1再拼接list2后面的元素
+        //归并思想：2333
         if (l2head.getNext() != null) {
             l1head.setNext(l2head.getNext());
         }
