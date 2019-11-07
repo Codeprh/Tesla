@@ -59,7 +59,7 @@ public class _12_QuickSort {
     private void quickSortInternally(int[] a, int p, int r) {
         if (p >= r) return;
 
-        int q = partition_v2(a, p, r); // 获取分区点
+        int q = partition(a, p, r); // 获取分区点
         quickSortInternally(a, p, q - 1);
         quickSortInternally(a, q + 1, r);
     }
@@ -139,7 +139,7 @@ public class _12_QuickSort {
     }
 
     public static void main(String[] args) {
-        int[] a = new int[]{300, 40};
+        int[] a = new int[]{1, 4, 2, 10, 3};
         _12_QuickSort app = new _12_QuickSort();
 
         app.quickSort(a, a.length);
