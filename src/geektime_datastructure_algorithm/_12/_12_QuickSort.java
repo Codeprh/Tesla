@@ -94,6 +94,7 @@ public class _12_QuickSort {
     }
 
     /**
+     * todo：
      * 获取分区点，非原地算法实现
      * <p>
      * partition()分区函数可以写得非常简单。我们申请两个临时数组X和Y，遍历A[p...r]，

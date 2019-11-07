@@ -11,8 +11,8 @@ package geektime_datastructure_algorithm._6;
  */
 public class SNode<T> {
 
-    private T ele;
-    private SNode next;
+    public T ele;
+    public SNode next;
 
     public SNode() {
         this.next = null;

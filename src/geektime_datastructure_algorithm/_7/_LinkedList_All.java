@@ -143,6 +143,39 @@ public class _LinkedList_All {
     }
 
     /**
+     * 参考版
+     * 合并两个有序链表
+     *
+     * @param l1
+     * @param l2
+     * @return
+     */
+    public static SNode mergeTwoLists(SNode l1, SNode l2) {
+        //利用哨兵结点简化实现难度 技巧三
+        SNode soldier = new SNode(0);
+        SNode p = soldier;
+
+        while (l1 != null && l2 != null) {
+            if ((int) l1.ele < (int) l2.ele) {
+                p.next = l1;
+                l1 = l1.next;
+            } else {
+                p.next = l2;
+                l2 = l2.next;
+            }
+            p = p.next;
+        }
+
+        if (l1 != null) {
+            p.next = l1;
+        }
+        if (l2 != null) {
+            p.next = l2;
+        }
+        return soldier.next;
+    }
+
+    /**
      * 参考版本
      * 求链表的中间结点
      *
@@ -150,8 +183,6 @@ public class _LinkedList_All {
      * @return
      */
     public static SNode findIntermediatenode(SNode list) {
-
-        //偶数和奇数的情况:最右情况
 
         if (list == null) return null;
 
@@ -169,9 +200,10 @@ public class _LinkedList_All {
 
     public static void main(String[] args) {
 
-        SNode head = SNode.createIntLinkedListRev();
-        SNode head2 = SNode.createIntLinkedListRev();
-        //SNode head2 = createIntLinkedListRev();
+        //SNode head = SNode.createIntLinkedListRev();
+        //SNode head2 = SNode.createIntLinkedListRev();
+        SNode head = createIntLinkedListRev();
+        SNode head2 = createIntLinkedListRev();
         SNode.printAll(head);
         SNode.printAll(head2);
 
@@ -184,7 +216,10 @@ public class _LinkedList_All {
         //SNode newHead = delLastKth(head, 2);
         //SNode.printAll(newHead);
 
-        SNode.printAll(merge((head), (head2)));
+        //merge((head), (head2));
+        SNode newHead = mergeTwoLists((head), (head2));
+
+        SNode.printAll(newHead);
 
     }
 
@@ -195,7 +230,7 @@ public class _LinkedList_All {
      */
     public static SNode createIntLinkedListRev() {
 
-        SNode<Integer> headNull = new SNode();
+        SNode<Integer> headNull = new SNode(0);
 
         SNode oneNode = new SNode(1);
         SNode twoNode = new SNode(2);
