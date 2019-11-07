@@ -1,6 +1,8 @@
 package geektime_datastructure_algorithm._12;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * 描述:
@@ -57,7 +59,7 @@ public class _12_QuickSort {
     private void quickSortInternally(int[] a, int p, int r) {
         if (p >= r) return;
 
-        int q = partition(a, p, r); // 获取分区点
+        int q = partition_v2(a, p, r); // 获取分区点
         quickSortInternally(a, p, q - 1);
         quickSortInternally(a, q + 1, r);
     }
@@ -94,7 +96,8 @@ public class _12_QuickSort {
     }
 
     /**
-     * todo：
+     * 不好的实现
+     * <p>
      * 获取分区点，非原地算法实现
      * <p>
      * partition()分区函数可以写得非常简单。我们申请两个临时数组X和Y，遍历A[p...r]，
@@ -105,14 +108,41 @@ public class _12_QuickSort {
      * @return
      */
     public int partition_v2(int[] a, int p, int r) {
-        return 0;
+        //选取最后一个元素作为pivot
+        int pivot = a[r];
+
+        List<Integer> a1 = new ArrayList<>();
+        List<Integer> a2 = new ArrayList<>();
+
+        for (int i = p; i < r; i++) {
+
+            if (a[i] <= pivot) {
+                a1.add(a[i]);
+            } else {
+                a2.add(a[i]);
+            }
+        }
+        a1.add(pivot);
+        a1.addAll(a2);
+
+        int point = 0;
+        int[] temp2 = a1.stream().mapToInt(Integer::intValue).toArray();
+        System.arraycopy(temp2, 0, a, p, temp2.length);
+
+        //找到pivot的位置
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == pivot) {
+                point = i;
+            }
+        }
+        return point;
     }
 
     public static void main(String[] args) {
-        int[] a = new int[]{1, 5, 9, 3, 4};
+        int[] a = new int[]{300, 40};
         _12_QuickSort app = new _12_QuickSort();
 
-        app.quickSortInternally(a, 0, a.length - 1);
+        app.quickSort(a, a.length);
 
         System.out.println(Arrays.toString(a));
 
