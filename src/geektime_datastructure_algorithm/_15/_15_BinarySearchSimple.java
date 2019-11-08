@@ -2,6 +2,7 @@ package geektime_datastructure_algorithm._15;
 
 /**
  * 描述:
+ * 参考版本
  * 基于递归实现的二分查找
  *
  * @author Noah
