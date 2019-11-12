@@ -58,7 +58,8 @@ public class MyBinarySearch {
             return -1;
         }
 
-        int mid = low + (high - low) / 2;
+        //int mid = low + (high - low) / 2;
+        int mid = low + ((high - low) >> 1);
 
         if (a[mid] == val) {
             return mid;
