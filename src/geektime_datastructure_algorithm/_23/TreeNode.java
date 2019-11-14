@@ -1,7 +1,6 @@
 package geektime_datastructure_algorithm._23;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * 描述:
@@ -31,7 +30,113 @@ public class TreeNode<T> {
     }
 
     /**
-     * 前序遍历
+     * 最佳实践：完全二叉树使用数组来存储
+     * <p>
+     * - 下标为2 * i 的位置存储的就是左子节点
+     * - 下标为2 * i + 1的位置存储 的就是右子节点
+     * - 下标为i/2的位置存储就是它的父节点
+     * - 根节点会存储在下标为1的位置
+     */
+    public String[] binaryTree2Array(TreeNode head) {
+
+        List<List<String>> temp = levelOrder_v3(head);
+        List<String> all = new ArrayList<>();
+
+        for (List<String> list : temp) {
+            all.addAll(list);
+        }
+
+        String[] strArr = all.toArray(new String[all.size()]);
+        String[] r = new String[strArr.length + 1];
+        System.arraycopy(strArr, 0, r, 1, strArr.length);
+        return r;
+    }
+
+    /**
+     * 层次遍历:BFS（宽度优先搜索算法）
+     *
+     * @param head
+     */
+    public void levelOrder(TreeNode head) {
+
+        if (head == null) {
+            return;
+        }
+
+    }
+
+    /**
+     * 参考版：层次遍历==>递归实现||迭代实现
+     */
+    List<List<String>> levels = new ArrayList<List<String>>();
+
+    public void helper(TreeNode node, int level) {
+        // start the current level
+        if (levels.size() == level)
+            levels.add(new ArrayList<String>());
+
+        // fulfil the current level
+        levels.get(level).add((String) node.data);
+
+        // process child nodes for the next level
+        if (node.left != null)
+            helper(node.left, level + 1);
+        if (node.right != null)
+            helper(node.right, level + 1);
+    }
+
+    /**
+     * 参考版本：递归实现
+     *
+     * @param root
+     * @return
+     */
+    public List<List<String>> levelOrder_v2(TreeNode root) {
+        if (root == null) return levels;
+        helper(root, 0);
+        return levels;
+    }
+
+    /**
+     * 参考版本：迭代&&队列实现
+     *
+     * @param root
+     * @return
+     */
+    public List<List<String>> levelOrder_v3(TreeNode root) {
+        List<List<String>> levels = new ArrayList<List<String>>();
+        if (root == null) return levels;
+
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.add(root);
+        int level = 0;
+
+        while (!queue.isEmpty()) {
+            // start the current level
+            levels.add(new ArrayList<String>());
+
+            // number of elements in the current level
+            int level_length = queue.size();
+            for (int i = 0; i < level_length; ++i) {
+                TreeNode node = queue.remove();
+
+                // fulfill the current level
+                levels.get(level).add((String) node.data);
+
+                // add child nodes of the current level
+                // in the queue for the next level
+                if (node.left != null) queue.add(node.left);
+                if (node.right != null) queue.add(node.right);
+            }
+            // go to next level
+            level++;
+        }
+        return levels;
+    }
+
+
+    /**
+     * 前序遍历：DFS（深度优先搜索算法）
      *
      * @param head
      */
@@ -46,7 +151,7 @@ public class TreeNode<T> {
     }
 
     /**
-     * 中序遍历
+     * 中序遍历：DFS（深度优先搜索算法）
      *
      * @param head
      */
@@ -63,7 +168,7 @@ public class TreeNode<T> {
     }
 
     /**
-     * 后序遍历
+     * 后序遍历：DFS（深度优先搜索算法）
      *
      * @param head
      */
@@ -78,10 +183,39 @@ public class TreeNode<T> {
     }
 
     public static void main(String[] args) {
-        TreeNode<String> app = new TreeNode<>();
 
+        TreeNode<String> app = new TreeNode<>();
         TreeNode<String> head = createBinaryTree();
 
+        //app.bfs(app, head);
+        //app.dfs(app, head);
+
+        String[] arrs = app.binaryTree2Array(head);
+        System.out.println(Arrays.toString(arrs));
+
+        int i = 2;
+        System.out.println("当前节点=" + arrs[i]);
+        System.out.println("左节点=" + arrs[2 * (i)]);
+        System.out.println("右节点=" + arrs[2 * i + 1]);
+
+
+    }
+
+    /**
+     * bfs：宽度优先搜索算法
+     *
+     * @param app
+     * @param head
+     */
+    public void bfs(TreeNode app, TreeNode head) {
+        System.out.println(app.levelOrder_v2(head).toString());
+        System.out.println(app.levelOrder_v3(head).toString());
+    }
+
+    /**
+     * dfs：深度优先搜索算法
+     */
+    public void dfs(TreeNode app, TreeNode head) {
         app.preOrder(head);
         System.out.println(app.dataList.toString());
         System.out.println("");
@@ -96,6 +230,7 @@ public class TreeNode<T> {
         System.out.println(app.dataList.toString());
         System.out.println("");
         app.dataList.clear();
+
     }
 
     /**
