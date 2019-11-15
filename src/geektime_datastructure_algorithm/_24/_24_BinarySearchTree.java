@@ -10,6 +10,7 @@ package geektime_datastructure_algorithm._24;
  * @create 2019-11-14 09:36
  */
 public class _24_BinarySearchTree {
+
     private Node tree;
 
     /**
@@ -93,6 +94,53 @@ public class _24_BinarySearchTree {
         if (pp == null) tree = child; // 删除的是根节点
         else if (pp.left == p) pp.left = child;
         else pp.right = child;
+    }
+
+    public static void main(String[] args) {
+        _24_BinarySearchTree app = new _24_BinarySearchTree();
+        app.createBinarySearchTree();
+        app.insert(1);
+        app.inOrder(app.tree);
+    }
+
+    /**
+     * 二叉查找树的中序遍历:从小到大输出数据
+     */
+    public void inOrder(Node head) {
+
+        if (head == null) {
+            return;
+        }
+
+        inOrder(head.left);
+        System.out.print(head.data + " ");
+        inOrder(head.right);
+
+    }
+
+    /**
+     * 创建二叉查找树
+     *
+     * @return
+     */
+    public Node createBinarySearchTree() {
+        Node _13 = new Node(13);
+        Node _10 = new Node(10);
+        Node _16 = new Node(16);
+        Node _9 = new Node(9);
+        Node _11 = new Node(11);
+        Node _14 = new Node(14);
+
+        _13.left = _10;
+        _13.right = _16;
+
+        _10.left = _9;
+        _10.right = _11;
+
+        _16.left = _14;
+
+        tree = _13;
+        return tree;
     }
 
     public static class Node {
