@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 /**
  * 描述:
+ * 参考版
  * 堆排序的实现
  * <p>
  * 乱序的数组：利用堆排序思想排序。
@@ -49,7 +50,7 @@ public class HeapSort {
     }
 
     /**
-     * 建堆
+     * 建堆：下标0开始
      *
      * @param arr
      */

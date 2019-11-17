@@ -32,15 +32,21 @@ public class Heap {
         Heap app = new Heap();
         HeapSort.buildHeap(app.a);
 
-        System.out.println(Arrays.toString(app.a));
-
         int[] temp = new int[app.n];
         System.arraycopy(app.a, 0, temp, 1, app.a.length);
         app.a = temp;
-        System.out.println(Arrays.toString(app.a));
+
+        System.out.println("原始，" + "数组=" + Arrays.toString(app.a) + ",n=" + app.n + ",count=" + app.count);
 
         app.insert(10);
-        System.out.println(Arrays.toString(app.a));
+        System.out.println("插入，" + "数组=" + Arrays.toString(app.a) + ",n=" + app.n + ",count=" + app.count);
+
+        app.removeMax();
+        System.out.println("删除，" + "数组=" + Arrays.toString(app.a) + ",n=" + app.n + ",count=" + app.count);
+
+        app.insert(20);
+        System.out.println("插入，" + "数组=" + Arrays.toString(app.a) + ",n=" + app.n + ",count=" + app.count);
+
 
     }
 
@@ -64,6 +70,49 @@ public class Heap {
             swap(a, i, i / 2); // swap()函数作用:交换下标为i和i/2的两个元素
             i = i / 2;
         }
+    }
+
+    /**
+     * 移除堆顶元素
+     */
+    public void removeMax() {
+        // 堆中没有数据
+        if (count == 0) return;
+
+        int temp = a[1];
+        a[1] = a[count];
+        a[count] = 0;
+
+        --count;
+        heapify(a, count, 1);
+        System.out.println("移除堆顶元素=" + temp);
+    }
+
+    public void buildHeap(int[] arr) {
+        // (arr.length - 1) / 2 为最后一个叶子节点的父节点
+        // 也就是最后一个非叶子节点，依次堆化直到根节点
+        for (int i = (arr.length - 1) / 2; i >= 0; i--) {
+            heapify(arr, arr.length - 1, i);
+        }
+    }
+
+    /**
+     * 自上往下堆化:下标1开始
+     *
+     * @param a
+     * @param n
+     * @param i
+     */
+    private void heapify(int[] a, int n, int i) {
+        while (true) {
+            int maxPos = i;
+            if (i * 2 <= n && a[i] < a[i * 2]) maxPos = i * 2;
+            if (i * 2 + 1 <= n && a[maxPos] < a[i * 2 + 1]) maxPos = i * 2 + 1;
+            if (maxPos == i) break;
+            swap(a, i, maxPos);
+            i = maxPos;
+        }
+
     }
 
     /**
