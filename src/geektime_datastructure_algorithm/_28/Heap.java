@@ -1,7 +1,12 @@
 package geektime_datastructure_algorithm._28;
 
+import geektime_datastructure_algorithm._29.HeapSort;
+
+import java.util.Arrays;
+
 /**
  * 描述:
+ * 参考版本
  * 数据结构：堆，一种特殊的树
  *
  * @author Noah
@@ -9,9 +14,35 @@ package geektime_datastructure_algorithm._28;
  */
 public class Heap {
 
-    private int[] a; // 数组，从下标1开始存储数据
-    private int n; // 堆可以存储的最大数据个数
-    private int count; // 堆中已经存储的数据个数
+    public int[] a; // 数组，从下标1开始存储数据
+    public int n; // 堆可以存储的最大数据个数
+    public int count; // 堆中已经存储的数据个数
+
+    /**
+     * 构造函数：初始化数据
+     */
+    public Heap() {
+        this.a = new int[]{6, 1, 2, 4, 5, 7};
+        this.n = a.length + 2;
+        this.count = a.length;
+    }
+
+    public static void main(String[] args) {
+
+        Heap app = new Heap();
+        HeapSort.buildHeap(app.a);
+
+        System.out.println(Arrays.toString(app.a));
+
+        int[] temp = new int[app.n];
+        System.arraycopy(app.a, 0, temp, 1, app.a.length);
+        app.a = temp;
+        System.out.println(Arrays.toString(app.a));
+
+        app.insert(10);
+        System.out.println(Arrays.toString(app.a));
+
+    }
 
     public Heap(int capacity) {
         a = new int[capacity + 1];
@@ -19,6 +50,11 @@ public class Heap {
         count = 0;
     }
 
+    /**
+     * 堆插入操作：自下而上堆化，数组从下标0开始
+     *
+     * @param data
+     */
     public void insert(int data) {
         if (count >= n) return; // 堆满了
         ++count;

@@ -53,7 +53,7 @@ public class HeapSort {
      *
      * @param arr
      */
-    private static void buildHeap(int[] arr) {
+    public static void buildHeap(int[] arr) {
         // (arr.length - 1) / 2 为最后一个叶子节点的父节点
         // 也就是最后一个非叶子节点，依次堆化直到根节点
         for (int i = (arr.length - 1) / 2; i >= 0; i--) {
