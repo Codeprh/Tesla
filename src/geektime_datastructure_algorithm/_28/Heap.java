@@ -88,14 +88,6 @@ public class Heap {
         System.out.println("移除堆顶元素=" + temp);
     }
 
-    public void buildHeap(int[] arr) {
-        // (arr.length - 1) / 2 为最后一个叶子节点的父节点
-        // 也就是最后一个非叶子节点，依次堆化直到根节点
-        for (int i = (arr.length - 1) / 2; i >= 0; i--) {
-            heapify(arr, arr.length - 1, i);
-        }
-    }
-
     /**
      * 自上往下堆化:下标1开始
      *
