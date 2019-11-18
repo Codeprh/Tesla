@@ -9,6 +9,13 @@ package geektime_datastructure_algorithm._28;
  */
 public class _28_HeapSort {
 
+    public static void main(String[] args) {
+
+        int[] a = new int[]{};
+        sort(a, a.length);
+
+    }
+
     /**
      * 建堆
      *
@@ -51,6 +58,22 @@ public class _28_HeapSort {
         int temp = a[i];
         a[i] = a[j];
         a[j] = temp;
+    }
+
+    /**
+     * n表示数据的个数，数组a中的数据从下标1到n的位置。
+     *
+     * @param a
+     * @param n
+     */
+    public static void sort(int[] a, int n) {
+        buildHeap(a, n);
+        int k = n;
+        while (k > 1) {
+            swap(a, 1, k);
+            --k;
+            heapify(a, k, 1);
+        }
     }
 
 }
