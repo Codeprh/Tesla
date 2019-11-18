@@ -49,6 +49,21 @@ public class TreeNode<T> {
         String[] strArr = all.toArray(new String[all.size()]);
         String[] r = new String[strArr.length + 1];
         System.arraycopy(strArr, 0, r, 1, strArr.length);
+
+        return r;
+    }
+
+    public String[] binaryTree2Array_v2(TreeNode head) {
+        List<List<String>> temp = levelOrder_v3(head);
+
+        String[] r = new String[10];
+        int use = 1;
+        for (List<String> list : temp) {
+
+            int ls = list.size();
+            System.arraycopy(list.toArray(), 0, r, use, ls);
+            use = ls + use;
+        }
         return r;
     }
 
@@ -190,7 +205,7 @@ public class TreeNode<T> {
         //app.bfs(app, head);
         //app.dfs(app, head);
 
-        String[] arrs = app.binaryTree2Array(head);
+        String[] arrs = app.binaryTree2Array_v2(head);
         System.out.println(Arrays.toString(arrs));
 
         int i = 2;
