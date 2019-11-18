@@ -11,6 +11,8 @@ import java.util.Random;
  * 使用堆求解topk问题
  * <p>
  * 动态数据:在100个数据当中求top 10大的数据
+ * <p>
+ * 静态数据也使用该方法求解
  *
  * @author Noah
  * @create 2019-11-18 14:07
