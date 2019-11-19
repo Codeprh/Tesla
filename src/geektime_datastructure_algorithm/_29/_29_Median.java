@@ -16,9 +16,48 @@ package geektime_datastructure_algorithm._29;
  */
 public class _29_Median {
 
-    public static void main(String[] args) {
-        int[] a = new int[]{2, 1, 3, 4, 6, 7};
+    public int[] small;
+    public int[] big;
 
+    public int sc = 0;
+    public int bc = 0;
+
+    public int medianSize;
+
+    public _29_Median(int n) {
+        medianSize = n / 2;
+        small = new int[n];
+        big = new int[n];
+    }
+
+    public static void main(String[] args) {
+
+        int[] a = new int[]{2, 1, 3, 4, 6, 7};
+        _29_Median app = new _29_Median(a.length);
+
+    }
+
+    public void insert(int a) {
+
+        if (sc == 0) {
+            small[++sc] = a;
+            return;
+        }
+
+        if (small[1] < a) {
+            ++bc;
+            big[bc] = a;
+
+        }
+    }
+
+    /**
+     * 从下往上堆化，场景：插入
+     *
+     * @param a
+     * @param count
+     */
+    public void heapfy(int[] a, int count) {
 
     }
 
