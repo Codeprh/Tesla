@@ -86,14 +86,6 @@ public class _29_Median {
             return;
         }
 
-        //只有一个元素的情况
-//        if (bc == 0) {
-//            ++bc;
-//            big[bc] = small[sc];
-//            sc--;
-//            return;
-//        }
-
         int n = bc + sc;
         int diff;
 
