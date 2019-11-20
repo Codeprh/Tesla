@@ -42,11 +42,11 @@ public class _29_Median {
     }
 
     public static void main(String[] args) {
-
         //int[] a = new int[]{2, 1, 3, 4, 6, 7, 8};
         //int[] a = new int[]{2, 1, 3};
         //int[] a = new int[]{10, 9, 8, 7, 6};
         //int[] a = new int[]{1, 2, 3, 4, 5};
+
 
         //int[] a = new int[]{2, 1, 3, 4};
         //int[] a = new int[]{1, 2, 3, 4};
@@ -158,7 +158,7 @@ public class _29_Median {
                 minPos = i * 2;
             }
 
-            if (i * 2 + 1 <= count && (small == true ? arr[minPos] > arr[i * 2 + 1] : arr[minPos] > arr[i * 2])) {
+            if (i * 2 + 1 <= count && (small == true ? arr[minPos] > arr[i * 2 + 1] : arr[minPos] < arr[i * 2+1])) {
                 minPos = i * 2 + 1;
             }
 
