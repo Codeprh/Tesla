@@ -18,12 +18,21 @@ import java.util.Arrays;
  */
 public class _29_Median {
 
+    /**
+     * 小顶堆、大顶堆定义
+     */
     public int[] small;
     public int[] big;
 
+    /**
+     * 小顶/大顶堆存储元素个数
+     */
     public int sc = 0;
     public int bc = 0;
 
+    /**
+     * 平衡大小堆
+     */
     public int medianSize;
 
     public _29_Median(int n) {
@@ -42,6 +51,7 @@ public class _29_Median {
         //int[] a = new int[]{2, 1, 3, 4};
         //int[] a = new int[]{1, 2, 3, 4};
         int[] a = new int[]{4, 3, 2, 1};
+        //todo：leetcode，求中位数题目
 
         _29_Median app = new _29_Median(a.length);
 
@@ -57,6 +67,12 @@ public class _29_Median {
 
     }
 
+    /**
+     * 通用插入大小顶堆数据
+     *
+     * @param a
+     * @param forceSmall 强制插入小顶堆
+     */
     public void insert(int a, boolean forceSmall) {
 
         if (sc == 0) {
