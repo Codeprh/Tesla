@@ -13,6 +13,16 @@ public class _39_KnapsackProblem {
 
     public static void main(String[] args) {
 
+        _39_KnapsackProblem app = new _39_KnapsackProblem();
+        int a[] = new int[]{1, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        app.f(0, 0, a, 10, 100);
+
+        int sum = 0;
+        for (int aa : a) {
+            sum += aa;
+        }
+        System.out.println("数值的和=" + sum);
+        System.out.println("最大重量=" + app.maxW);
     }
 
     // cw表示当前已经装进去的物品的重量和;
