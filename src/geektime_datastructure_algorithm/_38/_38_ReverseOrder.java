@@ -2,6 +2,8 @@ package geektime_datastructure_algorithm._38;
 
 /**
  * 描述:
+ * <p>
+ * 分治思想求解
  * 逆序度个数求解
  *
  * @author Noah
