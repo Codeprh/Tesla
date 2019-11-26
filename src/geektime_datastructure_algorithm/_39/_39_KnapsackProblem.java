@@ -26,6 +26,10 @@ public class _39_KnapsackProblem {
         }
         System.out.println("数值的和=" + sum);
         System.out.println("最大重量=" + app.maxW);
+
+        _39_KnapsackProblem_Simple app1 = new _39_KnapsackProblem_Simple();
+        app1.f(0, 0);
+        System.out.println("最大重量=" + app1.maxW);
     }
 
 
@@ -63,7 +67,7 @@ public class _39_KnapsackProblem {
     public static class _39_KnapsackProblem_Simple {
         // 回溯算法实现。注意:我把输入的变量都定义成了成员变量。
         private int maxW = Integer.MIN_VALUE; // 结果放到maxW中
-        private int[] weight = new int[]{2, 2, 4, 6, 3}; // 物品重量
+        private int[] weight = new int[]{6, 1, 1, 1, 3}; // 物品重量
         private int n = 5; // 物品个数
         private int w = 9; // 背包承受的最大重量
 
