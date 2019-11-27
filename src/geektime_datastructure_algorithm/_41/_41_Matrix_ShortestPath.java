@@ -97,5 +97,12 @@ public class _41_Matrix_ShortestPath {
         return currMinDist;
     }
 
+    public static void main(String[] args) {
+
+        _41_Matrix_ShortestPath app = new _41_Matrix_ShortestPath();
+        //1->2->1->2->6->4->3
+        System.out.println("矩阵最短路径=" + app.minDist(app.n - 1, app.n - 1));
+    }
+
 
 }
