@@ -43,6 +43,7 @@ public class _LinkedList_All {
 
     /**
      * 参考版本
+     * 链表反转
      *
      * @param list
      * @return
@@ -94,6 +95,7 @@ public class _LinkedList_All {
     }
 
     /**
+     * 自己实现（low）
      * 合并两个有序链表
      *
      * @param list1
