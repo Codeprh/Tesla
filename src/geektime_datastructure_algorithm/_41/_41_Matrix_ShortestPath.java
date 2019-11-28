@@ -101,7 +101,16 @@ public class _41_Matrix_ShortestPath {
 
         _41_Matrix_ShortestPath app = new _41_Matrix_ShortestPath();
         //1->2->1->2->6->4->3
-        System.out.println("矩阵最短路径=" + app.minDist(app.n - 1, app.n - 1));
+        int minDist = 0;
+        //minDist = app.minDist(app.n - 1, app.n - 1);
+        System.out.println("矩阵最短路径=" + minDist);
+
+        //app.minDistBT(0, 0, 0, app.matrix, app.n - 1);
+        System.out.println("矩阵最短路径=" + app.minDist);
+
+        minDist = app.minDistDP(app.matrix, app.n);
+        System.out.println("矩阵最短路径=" + minDist);
+
     }
 
 
