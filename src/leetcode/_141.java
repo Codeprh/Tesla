@@ -42,6 +42,7 @@ public class _141 {
     }
 
     /**
+     * todo:空指针问题
      * 双指针：快慢双指针
      *
      * @param head
@@ -49,11 +50,15 @@ public class _141 {
      */
     public boolean hasCycle(ListNode head) {
 
+        if (head == null || head.next == null) {
+            return false;
+        }
+
         ListNode low = head;
         ListNode fast = head.next;
 
         while (low != fast) {
-            if (low == null || fast == null) {
+            if (low == null || fast.next == null) {
                 return false;
             }
             low = low.next;
