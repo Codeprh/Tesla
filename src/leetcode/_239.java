@@ -2,6 +2,8 @@ package leetcode;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 /**
  * 描述:
@@ -55,7 +57,6 @@ public class _239 {
     }
 
     /**
-     * todo：考虑堆实现
      * 参考版本-双端队列实现
      */
     ArrayDeque<Integer> deq = new ArrayDeque<Integer>();
@@ -97,10 +98,62 @@ public class _239 {
         return output;
     }
 
+    /**
+     * 优先级队列（堆）：大顶堆求解
+     *
+     * @param nums
+     * @param k
+     * @return
+     */
+    public int[] maxSlidingWindow_v3(int[] nums, int k) {
+
+        //大顶堆定义：y-x，小顶堆定义：x-y，默认实现是小顶堆
+        Queue<Integer> queue = new PriorityQueue<>((x, y) -> y - x);
+        int[] r = new int[nums.length - k + 1];
+        int rcount = 0;
+        int lastIndex = 0;
+
+        int n = nums.length;
+        if (n * k == 0) return new int[0];
+        if (k == 1) return nums;
+
+        boolean isBreak = false;
+        if (nums.length == k) {
+            isBreak = true;
+        }
+
+        for (int i = 0; i < nums.length + 1; i++) {
+            //初始化工作
+            if (i <= k - 1) {
+                queue.add(nums[i]);
+                lastIndex = nums[0];
+                continue;
+            }
+
+            r[rcount] = queue.peek();
+            rcount++;
+
+            if (isBreak) {
+                break;
+            }
+
+            queue.remove(lastIndex);
+            lastIndex = nums[rcount];
+
+            if (i < nums.length) {
+                queue.add(nums[i]);
+            }
+
+        }
+        System.out.println("滑动窗口最大值=" + Arrays.toString(r));
+        return r;
+
+    }
+
     public static void main(String[] args) {
         _239 app = new _239();
-        int[] a = new int[]{1, 3, -1, -3, 5, 3, 6, 7};
-        System.out.println(Arrays.toString(app.maxSlidingWindow_v2(a, 3)));
+        int[] a = new int[]{1,3,-1,-3,5,3,6,7};
+        System.out.println(Arrays.toString(app.maxSlidingWindow_v3(a, 3)));
     }
 
 
