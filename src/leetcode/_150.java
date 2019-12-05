@@ -23,7 +23,12 @@ import java.util.Stack;
  * @create 2019-12-04 16:07
  */
 public class _150 {
-
+    /**
+     * todo：check代码
+     *
+     * @param tokens
+     * @return
+     */
     public int evalRPN(String[] tokens) {
 
         Stack<Integer> numStack = new Stack<>();
@@ -63,6 +68,31 @@ public class _150 {
 
         }
         return result;
+    }
+
+    /**
+     * 参考版代码
+     *
+     * @param tokens
+     * @return
+     */
+    public int evalRPN_v2(String[] tokens) {
+        Stack<Integer> stack = new Stack<>();
+        for (String s : tokens) {
+            if (s.equals("+")) {
+                stack.push(stack.pop() + stack.pop());
+            } else if (s.equals("-")) {
+                stack.push(-stack.pop() + stack.pop());
+            } else if (s.equals("*")) {
+                stack.push(stack.pop() * stack.pop());
+            } else if (s.equals("/")) {
+                int num1 = stack.pop();
+                stack.push(stack.pop() / num1);
+            } else {
+                stack.push(Integer.parseInt(s));
+            }
+        }
+        return stack.pop();
     }
 
 
