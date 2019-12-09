@@ -80,7 +80,7 @@ public class _69 {
 
         while (left < right) {
             //todo:临界值是否稳妥
-            int mid = left + (right - left) / 2;
+            int mid = left + (right - left + 1) / 2;
             int rmid = mid * mid;
 
             if (x < rmid) {
@@ -94,9 +94,33 @@ public class _69 {
         return left;
     }
 
+    /**
+     * 参考版本
+     * 牛顿法求解平方根
+     *
+     * @param x
+     * @return
+     */
+    public int mySqrt_v4(int x) {
+        long a = x;
+        while (a * a > x) {
+            a = (a + x / a) / 2;
+        }
+        return (int) a;
+    }
+
+    /**
+     * 使用sdk求解
+     *
+     * @return
+     */
+    public int mySqrt_v5(int x) {
+        return (int) Math.sqrt(x);
+    }
+
     public static void main(String[] args) {
         _69 app = new _69();
-        System.out.println("x的平方根_v2=" + app.mySqrt_v2(1));
-        System.out.println("x的平方根_v3=" + app.mySqrt_v3(1));
+        System.out.println("x的平方根_v4=" + app.mySqrt_v4(9132));
+        System.out.println("x的平方根_v3=" + app.mySqrt_v3(9132));
     }
 }
