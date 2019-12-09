@@ -10,7 +10,8 @@ package leetcode;
  */
 public class _69 {
     /**
-     * 第一版本：自己实现，无法求解
+     * 第一版本：自己实现，无法求解。
+     * 能够使用"猜"的思路去解决问题，但是没有想到二分查找去实现。
      *
      * @param x
      * @return
@@ -63,8 +64,39 @@ public class _69 {
         return (int) left;
     }
 
+    /**
+     * 自己实现：采用二分查找思路来求解平方根
+     *
+     * @param x
+     * @return
+     */
+    public int mySqrt_v3(int x) {
+        if (x == 0) {
+            return 0;
+        }
+
+        int left = 1;
+        int right = x / 2 + 1;
+
+        while (left < right) {
+            //todo:临界值是否稳妥
+            int mid = left + (right - left) / 2;
+            int rmid = mid * mid;
+
+            if (x < rmid) {
+                right = mid - 1;
+            } else {
+                left = mid;
+            }
+
+        }
+
+        return left;
+    }
+
     public static void main(String[] args) {
         _69 app = new _69();
-        System.out.println("x的平方根=" + app.mySqrt_v2(1));
+        System.out.println("x的平方根_v2=" + app.mySqrt_v2(1));
+        System.out.println("x的平方根_v3=" + app.mySqrt_v3(1));
     }
 }
