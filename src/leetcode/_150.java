@@ -1,6 +1,8 @@
 package leetcode;
 
 import java.util.Stack;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 描述:
@@ -37,15 +39,20 @@ public class _150 {
 
         for (String toke : tokens) {
 
-            if (Character.isDigit(toke.charAt(0))) {
+            Pattern pattern = Pattern.compile("^-?[0-9]+");
+            Matcher isNum = pattern.matcher(toke);
+            //Character.isDigit(toke.charAt(0))，无法判断负数的情况
+            if (isNum.matches()) {
                 int intToken = Integer.parseInt(toke);
                 numStack.push(intToken);
+                result = intToken;
             } else {
+
                 charStack.push(toke);
-            }
-
-            while (numStack.size() >= 2 && !charStack.isEmpty()) {
-
+                //字符计算逻辑
+                if (numStack.size() < 2) {
+                    continue;
+                }
                 int num1 = numStack.pop();
                 int num2 = numStack.pop();
 
@@ -98,8 +105,9 @@ public class _150 {
 
     public static void main(String[] args) {
         _150 app = new _150();
-        String[] strs = new String[]{"10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"};
-        System.out.println("逆波兰式计算结果=" + app.evalRPN(strs));
+        String[] strs = new String[]{"3", "-4", "+"};
+        System.out.println("逆波兰式计算结果_v2=" + app.evalRPN_v2(strs));
+        System.out.println("逆波兰式计算结果_v1=" + app.evalRPN(strs));
 
     }
 }
