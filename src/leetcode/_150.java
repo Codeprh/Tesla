@@ -26,8 +26,6 @@ import java.util.regex.Pattern;
  */
 public class _150 {
     /**
-     * todo：check代码
-     *
      * @param tokens
      * @return
      */
@@ -39,6 +37,7 @@ public class _150 {
 
         for (String toke : tokens) {
 
+            //todo:负数，字符优化
             Pattern pattern = Pattern.compile("^-?[0-9]+");
             Matcher isNum = pattern.matcher(toke);
 
