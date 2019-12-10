@@ -1,6 +1,7 @@
 package leetcode;
 
 import java.util.Objects;
+import java.util.Stack;
 
 /**
  * 描述:
@@ -69,9 +70,98 @@ public class _32 {
         return rmax;
     }
 
+    /**
+     * 第二版：不能实现，计算和匹配类似的都能使用双栈来解决问题.使用栈，无法解决。难受
+     *
+     * @param s
+     * @return
+     */
+    public int longestValidParentheses_v2(String s) {
+
+        Stack<Character> leftCharStack = new Stack<>();
+        Stack<Character> rightCharStack = new Stack<>();
+
+        int r = 0;
+        char[] arrs = s.toCharArray();
+        int rmax = 0;
+
+        boolean left = true;
+
+        for (int i = 0; i < arrs.length; i++) {
+
+            if (arrs[i] == ')') {
+                left = false;
+            } else {
+                left = true;
+            }
+
+            if (left && (leftCharStack.isEmpty() || rightCharStack.isEmpty())) {
+                leftCharStack.push(arrs[i]);
+                continue;
+            } else if (!left && (rightCharStack.isEmpty() || leftCharStack.isEmpty())) {
+                rightCharStack.push(arrs[i]);
+                if (leftCharStack.isEmpty()) {
+                    continue;
+                }
+            }
+
+
+            if (match(arrs[i], left == true ? rightCharStack.peek() : leftCharStack.peek())) {
+                r += 2;
+                if (left) {
+                    rightCharStack.pop();
+                    leftCharStack.pop();
+                } else {
+                    rightCharStack.pop();
+                    leftCharStack.pop();
+                }
+            } else {
+
+                if (left) {
+                    leftCharStack.push(arrs[i]);
+                } else {
+                    rightCharStack.push(arrs[i]);
+                }
+            }
+
+        }
+        return r;
+    }
+
+    /**
+     * 是否匹配
+     *
+     * @param c
+     * @param top
+     * @return
+     */
+    public boolean match(char c, char top) {
+        if (c == '(') {
+            if (top == ')') {
+                return true;
+            }
+        } else if (c == ')') {
+            if (top == '(') {
+                return true;
+            }
+        }
+        return false;
+
+    }
+
     public static void main(String[] args) {
         _32 app = new _32();
+        //2     (()
+        System.out.println("最长括号匹配=" + app.longestValidParentheses_v2("(()"));
+        //4     )()())
+        System.out.println("最长括号匹配=" + app.longestValidParentheses_v2(")()())"));
         //6
-        System.out.println("最长括号匹配=" + app.longestValidParentheses("()(())"));
+        System.out.println("最长括号匹配=" + app.longestValidParentheses_v2("()(())"));
+        //4
+        System.out.println("最长括号匹配=" + app.longestValidParentheses_v2(")()())"));
+        //4
+        System.out.println("最长括号匹配=" + app.longestValidParentheses_v2("(()()"));
+        //2
+        System.out.println("最长括号匹配=" + app.longestValidParentheses_v2("()(()"));
     }
 }
