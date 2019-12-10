@@ -41,7 +41,10 @@ public class _150 {
 
             Pattern pattern = Pattern.compile("^-?[0-9]+");
             Matcher isNum = pattern.matcher(toke);
+
             //Character.isDigit(toke.charAt(0))，无法判断负数的情况
+            //而第二方式则可以通过修改正则表达式实现校验负数，将正则表达式修改为“^-?[0-9]+”即可，修改为“-?[0-9]+.?[0-9]+”即可匹配所有数字。
+
             if (isNum.matches()) {
                 int intToken = Integer.parseInt(toke);
                 numStack.push(intToken);
