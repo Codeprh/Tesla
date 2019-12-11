@@ -129,6 +129,43 @@ public class _32 {
     }
 
     /**
+     * 参考版：暴力
+     * todo:动态规划思想解决
+     *
+     * @param s
+     * @return
+     */
+    public int longestValidParentheses_v3(String s) {
+
+
+        int maxlen = 0;
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = i + 2; j <= s.length(); j += 2) {
+                if (isValid(s.substring(i, j))) {
+                    maxlen = Math.max(maxlen, j - i);
+                }
+            }
+        }
+        return maxlen;
+
+
+    }
+
+    public boolean isValid(String s) {
+        Stack<Character> stack = new Stack<Character>();
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') {
+                stack.push('(');
+            } else if (!stack.empty() && stack.peek() == '(') {
+                stack.pop();
+            } else {
+                return false;
+            }
+        }
+        return stack.empty();
+    }
+
+    /**
      * 是否匹配
      *
      * @param c
@@ -152,16 +189,16 @@ public class _32 {
     public static void main(String[] args) {
         _32 app = new _32();
         //2     (()
-        System.out.println("最长括号匹配=" + app.longestValidParentheses_v2("(()"));
+        System.out.println("最长括号匹配=" + app.longestValidParentheses_v3("(()"));
         //4     )()())
-        System.out.println("最长括号匹配=" + app.longestValidParentheses_v2(")()())"));
+        System.out.println("最长括号匹配=" + app.longestValidParentheses_v3(")()())"));
         //6
-        System.out.println("最长括号匹配=" + app.longestValidParentheses_v2("()(())"));
+        System.out.println("最长括号匹配=" + app.longestValidParentheses_v3("()(())"));
         //4
-        System.out.println("最长括号匹配=" + app.longestValidParentheses_v2(")()())"));
+        System.out.println("最长括号匹配=" + app.longestValidParentheses_v3(")()())"));
         //4
-        System.out.println("最长括号匹配=" + app.longestValidParentheses_v2("(()()"));
+        System.out.println("最长括号匹配=" + app.longestValidParentheses_v3("(()()"));
         //2
-        System.out.println("最长括号匹配=" + app.longestValidParentheses_v2("()(()"));
+        System.out.println("最长括号匹配=" + app.longestValidParentheses_v3("()(()"));
     }
 }
