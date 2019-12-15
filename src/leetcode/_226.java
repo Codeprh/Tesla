@@ -21,7 +21,11 @@ package leetcode;
  * @create 2019-12-14 21:00
  */
 public class _226 {
-
+    /**
+     * todo:实现自己的第一版本功能
+     * @param root
+     * @return
+     */
     public TreeNode invertTree(TreeNode root) {
         return null;
     }
