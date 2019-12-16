@@ -6,6 +6,16 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
+ * 二叉树最大深度:
+ * 给定一个二叉树，找出其最大深度。
+ * <p>
+ * 二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。
+ * 说明: 叶子节点是指没有子节点的节点。
+ * <p>
+ * 给定二叉树 [3,9,20,null,null,15,7]
+ * <p>
+ * 返回它的最大深度 3
+ *
  * @author codingprh
  * @create 2019-06-25 10:56
  */
@@ -13,13 +23,14 @@ public class _104 {
     public static void main(String[] args) {
         _104 app = new _104();
         BinaryTreeNode root = app.createTree();
-        int deep = app.maxDepth_v2(root);
+        int deep = app.maxDepth_v3(root);
         System.out.println("树的深度为" + deep);
 
 
     }
 
     /**
+     * 参考版本
      * 递归：
      * 直观的方法是通过递归来解决问题。在这里，我们演示了 DFS（深度优先搜索）策略的示例。
      *
@@ -33,7 +44,27 @@ public class _104 {
     }
 
     /**
-     * todo：高频题目
+     * 自己实现版本：递归求解树的最大深度
+     *
+     * @param root
+     * @return
+     */
+    public int maxDepth_v3(BinaryTreeNode root) {
+
+        if (root == null) {
+            return 0;
+        }
+
+        int lmax = maxDepth_v3(root.LeftChild);
+        int rmax = maxDepth_v3(root.RightChild);
+
+        return Math.max(lmax, rmax) + 1;
+
+
+    }
+
+    /**
+     * 参考版本
      * 迭代：
      * 我们还可以在栈的帮助下将上面的递归转换为迭代。
      *
