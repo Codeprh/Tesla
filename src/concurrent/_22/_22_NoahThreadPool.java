@@ -3,6 +3,8 @@ package concurrent._22;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
@@ -67,13 +69,14 @@ public class _22_NoahThreadPool {
 
     public static void main(String[] args) throws InterruptedException {
 
-        _22_NoahThreadPool noahThreadPool = new _22_NoahThreadPool(new LinkedBlockingQueue<>(20), 10);
+        //_22_NoahThreadPool noahThreadPool = new _22_NoahThreadPool(new LinkedBlockingQueue<>(20), 100);
+        ExecutorService singleThread = Executors.newFixedThreadPool(300);
 
         for (int i = 100; i > 0; i--) {
-            noahThreadPool.execute(() -> {
+            singleThread.execute(() -> {
                 System.out.println("当前线程名=" + Thread.currentThread().getName());
             });
-            Thread.sleep(1000);
+            Thread.sleep(500);
         }
     }
 }
