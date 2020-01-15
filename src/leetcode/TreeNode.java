@@ -84,7 +84,7 @@ public class TreeNode<T> {
      * @param root
      * @return
      */
-    public List<List<Integer>> LevelTraversal(TreeNode root) {
+    public static List<List<Integer>> LevelTraversal(TreeNode root) {
         List<List<Integer>> levels = new ArrayList<List<Integer>>();
         if (root == null) return levels;
 
