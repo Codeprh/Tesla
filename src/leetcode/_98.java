@@ -1,5 +1,8 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 描述:
  * 验证二叉查找树
@@ -35,7 +38,7 @@ public class _98 {
         TreeNode treeNode = TreeNode.creatBinarySearchTreesByLinked(false);
 
         _98 app = new _98();
-        System.out.println("当前二叉树是查找树吗？" + app.isValidBST(treeNode));
+        System.out.println("当前二叉树是查找树吗？" + app.isValidBST_v1(treeNode));
     }
 
     /**
@@ -64,20 +67,40 @@ public class _98 {
         return true;
     }
 
+    private List<Integer> list = new ArrayList<>();
 
     /**
-     * todo
-     * 中序遍历，等到的是一个有序的数组
+     * 利用中序遍历，等到的是一个有序的数组的特点，来判定
      *
      * @param root
      * @return
      */
-    public boolean isValidBST_inorder_traversal(TreeNode root) {
+    public boolean isValidBST_v1(TreeNode root) {
 
-        if (root == null) {
-
+        inorderTraversal(root);
+        int preTemp = Integer.MIN_VALUE;
+        for (Integer aa : list) {
+            if (aa < preTemp) {
+                return false;
+            }
+            preTemp = aa;
         }
-        return false;
+        return true;
+    }
+
+    /**
+     * 中序遍历
+     *
+     * @param node
+     */
+    private void inorderTraversal(TreeNode node) {
+        if (node == null) {
+            return;
+        }
+        inorderTraversal(node.left);
+        list.add((int) node.val);
+        inorderTraversal(node.right);
+
     }
 
 
