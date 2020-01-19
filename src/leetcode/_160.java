@@ -1,5 +1,9 @@
 package leetcode;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
 /**
  * @author Noah
  * @create 2019-07-30 15:46
@@ -67,9 +71,53 @@ public class _160 {
             val = x;
             next = null;
         }
+
+        @Override
+        public String toString() {
+            return "ListNode{" +
+                    "val=" + val +
+                    ", next=" + next +
+                    '}';
+        }
     }
 
     /**
+     * 创建相交链表
+     */
+    public ListNode[] createListNode() {
+
+        ListNode[] arrs = new ListNode[2];
+
+        ListNode _1 = new ListNode(1);
+        ListNode _2 = new ListNode(2);
+        ListNode _3 = new ListNode(3);
+        ListNode _31 = new ListNode(31);
+        ListNode _32 = new ListNode(32);
+
+        ListNode _4 = new ListNode(4);
+
+        ListNode _5 = new ListNode(5);
+        ListNode _6 = new ListNode(6);
+
+        _1.next = _2;
+        _2.next = _4;
+
+        _3.next = _31;
+        _31.next = _32;
+        _32.next = _4;
+
+        _4.next = _5;
+        _5.next = _6;
+
+        arrs[0] = _1;
+        arrs[1] = _3;
+
+        return arrs;
+    }
+
+    /**
+     * todo：报错：
+     * 自己实现第一版：使用哈希表来
      * 相交链表
      *
      * @param headA
@@ -77,14 +125,36 @@ public class _160 {
      * @return
      */
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        //todo
+
+        Map<Integer, Integer> map = new HashMap<>();
+
+        while (headA != null) {
+            map.put(headA.val, headA.val);
+            headA = headA.next;
+        }
+
+        while (headB != null) {
+
+            Integer val = map.get(headB.val);
+            if (!Objects.isNull(val)) {
+                return headB;
+            }
+            headB = headB.next;
+        }
+
+
         return null;
 
     }
 
     public static void main(String[] args) {
+
         _160 app = new _160();
-        app.getIntersectionNode(null, null);
+        ListNode[] arrs = app.createListNode();
+
+
+        System.out.println("相交节点=" + app.getIntersectionNode(arrs[0], arrs[1]));
+
 
     }
 }
