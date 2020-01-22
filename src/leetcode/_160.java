@@ -116,7 +116,25 @@ public class _160 {
     }
 
     /**
-     * todo：报错：
+     * 参考版本：两个指针，如果有相交点，那走相同的路程。肯定在相交点碰面
+     *
+     * @param headA
+     * @param headB
+     * @return
+     */
+    public ListNode getIntersectionNode_v2(ListNode headA, ListNode headB) {
+        if (headA == null || headB == null) return null;
+        ListNode pA = headA, pB = headB;
+        while (pA != pB) {
+            pA = pA == null ? headB : pA.next;
+            pB = pB == null ? headA : pB.next;
+        }
+        return pA;
+
+    }
+
+    /**
+     * 错误实现
      * 自己实现第一版：使用哈希表来
      * 相交链表
      *
@@ -153,7 +171,7 @@ public class _160 {
         ListNode[] arrs = app.createListNode();
 
 
-        System.out.println("相交节点=" + app.getIntersectionNode(arrs[0], arrs[1]));
+        System.out.println("相交节点=" + app.getIntersectionNode_v2(arrs[0], arrs[1]));
 
 
     }
