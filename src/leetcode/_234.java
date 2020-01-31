@@ -21,6 +21,12 @@ public class _234 {
         }
     }
 
+    /**
+     * 参考版：第一版
+     *
+     * @param head
+     * @return
+     */
     public boolean isPalindrome(ListNode head) {
         List<Integer> vals = new ArrayList<>();
 
