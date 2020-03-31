@@ -27,7 +27,7 @@ public class FileNamePrint {
      */
     public static List<String> printName(String path) {
 
-        File f = new File("/Users/codingprh/Documents/mac /百度云资料/42-数据结构与算法之美（完结）(1)/");
+        File f = new File("/Users/codingprh/Documents/mac /百度云资料/46-Linux性能优化实战（完结）/pdf/");
         File[] listFiles = f.listFiles();
 
         String regular = "[0-9]*";
