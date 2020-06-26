@@ -1,7 +1,6 @@
 package javaOffer._1;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
@@ -14,7 +13,7 @@ import java.lang.reflect.Method;
 public class ReflectSample {
 
 
-    public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException, NoSuchFieldException {
+    public static void main(String[] args) throws Exception {
 
         //获取字节码
         Class rc = Class.forName("javaOffer._1.ReflectRobot");

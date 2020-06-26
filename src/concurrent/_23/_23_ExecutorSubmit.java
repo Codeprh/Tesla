@@ -37,6 +37,11 @@ public class _23_ExecutorSubmit {
         });
         //Runnable + Result方式
         Future f3 = executor.submit(() -> {
+            try {
+                Thread.sleep(1000 * 10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             System.out.println("hello Runnable,with return");
         }, "hello Runnable");
 
