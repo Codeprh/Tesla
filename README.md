@@ -1,6 +1,6 @@
 # Tesla
 
-Java并发编程实战、数据结构与算法、LeetCode等。
+Java并发编程实战、JDK基础源码、设计模式、数据结构与算法、LeetCode等。
 
-具体可以参考：[点击博客](https://codeprh.github.io/)
+了解更多Noah：[点击博客](https://codeprh.github.io/)
 
