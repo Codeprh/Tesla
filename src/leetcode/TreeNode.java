@@ -23,7 +23,7 @@ public class TreeNode<T> {
     }
 
     /**
-     * 参考：{@link geektime_datastructure_algorithm._23.TreeNode}
+     * 参考：{@link geektimeDatastructureAlgorithm._23.TreeNode}
      * <p>
      * 创建int的二叉查找树，链表存储&&非完全二叉树
      * //     10
