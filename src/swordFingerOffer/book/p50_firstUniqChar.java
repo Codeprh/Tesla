@@ -1,9 +1,6 @@
 package swordFingerOffer.book;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * 描述:
@@ -50,4 +47,53 @@ public class p50_firstUniqChar {
         }
         return list != null && list.size() > 0 ? list.get(0) : ' ';
     }
+
+    /**
+     * 只使用一个map
+     *
+     * @param s
+     * @return
+     */
+    public char firstUniqChar_right(String s) {
+
+        HashMap<Character, Boolean> dic = new HashMap<>();
+        char[] sc = s.toCharArray();
+
+        //把结果存储到map中
+        for (char c : sc) {
+            dic.put(c, !dic.containsKey(c));
+        }
+
+        //再次遍历元数组，等到第一个出现数字
+        for (char c : sc) {
+            if (dic.get(c)) return c;
+        }
+
+        return ' ';
+    }
+
+    /**
+     * 有序哈希表:按照插入顺序排序
+     *
+     * @param s
+     * @return
+     */
+    public char firstUniqChar_right2(String s) {
+
+        Map<Character, Boolean> dic = new LinkedHashMap<>();
+        char[] sc = s.toCharArray();
+
+        for (char c : sc) {
+            dic.put(c, !dic.containsKey(c));
+        }
+
+        for (Map.Entry<Character, Boolean> d : dic.entrySet()) {
+            if (d.getValue()) {
+                return d.getKey();
+            }
+        }
+        return ' ';
+    }
+
+
 }
