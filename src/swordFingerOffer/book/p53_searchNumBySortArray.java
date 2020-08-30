@@ -2,7 +2,7 @@ package swordFingerOffer.book;
 
 /**
  * 描述:
- * 在排序数组中查找数字 I
+ * 在排序数组中查找数字 I，出现的次数
  *
  * @author Noah
  * @create 2020-08-29 8:51 上午
@@ -14,8 +14,56 @@ public class p53_searchNumBySortArray {
         p53_searchNumBySortArray app = new p53_searchNumBySortArray();
 
         int[] nums = new int[]{5, 7, 7, 8, 8, 10};
-        System.out.println(app.search(nums, 8));
+        System.out.println(app.search_noah_right(nums, 7));
 
+    }
+
+    /**
+     * noah，二分查找
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    public int search_noah_right(int[] nums, int target) {
+        //处理right
+        int left = 0;
+        int right = nums.length - 1;
+
+        while (left <= right) {
+            //求得中间下标
+            int m = (left + right) / 2;
+
+            if (target < nums[m]) {
+                right = m - 1;
+            } else {
+                left = m + 1;
+            }
+        }
+
+        //无匹配结果提前返回
+        if (right >= 0 && nums[right] != target) {
+            return 0;
+        }
+
+        int rightR = right;
+
+        //处理左边
+        left = 0;
+        right = nums.length - 1;
+
+        while (left <= right) {
+
+            int m = (left + right) / 2;
+            if (nums[m] < target) {
+                left = m + 1;
+            } else {
+                right = m - 1;
+            }
+        }
+
+
+        return rightR - left + 1;
     }
 
     /**
