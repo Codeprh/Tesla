@@ -11,9 +11,53 @@ package swordFingerOffer.book;
  */
 public class p18_deleteNode {
 
+    /**
+     * noah版本：不再低调
+     *
+     * @param head
+     * @param val
+     * @return
+     */
     public ListNode deleteNode(ListNode head, int val) {
 
-        return null;
+        ListNode root = head;
+
+        if (head.val == val) {
+            return head.next;
+        }
+
+        while (root != null) {
+
+            if (root.next == null) {
+                return head;
+            }
+
+            if (root.next.val == val) {
+                root.next = root.next.next;
+            } else {
+                root = root.next;
+            }
+
+        }
+
+        return head;
+    }
+
+
+    /**
+     * 递归版本
+     *
+     * @param head
+     * @param val
+     * @return
+     */
+    public ListNode deleteNode_right(ListNode head, int val) {
+        if (head == null)
+            return head;
+        if (head.val == val)
+            return head.next;
+        head.next = deleteNode_right(head.next, val);
+        return head;
     }
 
 
